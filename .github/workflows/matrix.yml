@@ -2,6 +2,7 @@ name: Matrix demo
 on: push
 jobs:
   build:
+    continue-on-error: true
     # Una matriz nos permite agregar diferentes configuraciones a un mismo job
     # Por ejemplo correr un job con diferentes versiones de node
     strategy: 

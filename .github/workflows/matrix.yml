@@ -10,10 +10,10 @@ jobs:
         node-version-matrix: [12, 14, 16] # Versiones de node a usar
         os: [ubuntu-latest, windows-latest] # Sistemas operativos a usar
         include: # Agrega una combinación especifica
-          - node-version: 18
+          - node-version-matrix: 18
             os: ubuntu-latest
         exclude: # Elimina una combinación
-          - node-version: 12
+          - node-version-matrix: 12
             os: windows-latest
     runs-on: ${{ matrix.os }} # Accedemos a la llave "os" creada en la matrix
     steps:

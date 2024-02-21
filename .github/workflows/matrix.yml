@@ -1,0 +1,22 @@
+name: Matrix demo
+on: push
+jobs:
+  build:
+    # Una matriz nos permite agregar diferentes configuraciones a un mismo job
+    # Por ejemplo correr un job con diferentes versiones de node
+    strategy: 
+      matrix:
+        node-version-matrix: [12, 14, 16] # Versiones de node a usar
+        os: [ubuntu-latest, windows-latest] # Sistemas operativos a usar
+    runs-on: ${{ matrix.os }} # Accedemos a la llave "os" creada en la matrix
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version-matrix }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build

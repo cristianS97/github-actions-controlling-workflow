@@ -4,7 +4,7 @@ on:
     inputs: # Indicamos que espera recibir este workflow
       artifact-name: # Nombre que le daremos a lo que recibe para identificarlo
         description: The name of the deployable artifact files
-        require: false
+        required: false
         default: dist
         type: string
 jobs:

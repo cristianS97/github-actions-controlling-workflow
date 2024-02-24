@@ -77,6 +77,13 @@ jobs:
     # secrets:
     #   # Identificador declarado en "reusable.yml"
     #   some-secret: ${{ secrets.clave-secreto }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Deploy Output
+        # Se accede al output que viene desde el reusable.yml
+        run: echo "${{ needs.deploy.outputs.result }}"
   report:
     needs: [lint, deploy]
     # Corremos este step si algún job falla

@@ -73,6 +73,10 @@ jobs:
     with:
       # Mandamos el artifact del paso anterior a "reusable.yml"
       artifact-name: dist-files
+    # Mandamos secretos
+    # secrets:
+    #   # Identificador declarado en "reusable.yml"
+    #   some-secret: ${{ secrets.clave-secreto }}
   report:
     needs: [lint, deploy]
     # Corremos este step si algún job falla
